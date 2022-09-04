@@ -9,7 +9,7 @@ namespace Catalog.Repositories
     {
         private readonly List<Item> items = new()
         {
-            new Item{Id = Guid.NewGuid(),Name = "Portion",Price = 9,CreatedDate = DateTimeOffset.UtcNow},
+            new Item{Id = Guid.NewGuid(),Name = "Potion",Price = 9,CreatedDate = DateTimeOffset.UtcNow},
             new Item{Id = Guid.NewGuid(),Name = "Iron Sword",Price = 20,CreatedDate = DateTimeOffset.UtcNow},
             new Item{Id = Guid.NewGuid(),Name = "Bronze Shield",Price = 18,CreatedDate = DateTimeOffset.UtcNow},
         };
@@ -19,9 +19,9 @@ namespace Catalog.Repositories
             return items;
         }
 
-        public Item GetItem(Guid Id)
+        public Item GetItem(Guid id)
         {
-            return items.where(item=>item.id == id).SingleOrDefault(); 
+            return items.Where(item=>item.Id == id).SingleOrDefault(); 
             //the output is a collection but we need only one item or the default one thats why we use SingleOrDefault
             
         }
