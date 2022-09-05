@@ -27,5 +27,9 @@ namespace Catalog.Repositories
             //the output is a collection but we need only one item or the default one thats why we use SingleOrDefault
             
         }
+        public void CreateItem(Item item)
+        {
+            items.Add(item);
+        }
     }
 }
