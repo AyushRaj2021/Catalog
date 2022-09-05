@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Catalog.Repositories;
 using Catalog.Entities;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -11,26 +12,35 @@ namespace Catalog.Controllers
     [Route("items")]
     public class ItemsController : ControllerBase
     {
-        private readonly InMemItemsRepository repository;
+        private readonly IItemsRepository repository;
 
-        public ItemsController(){
-            repository = new InMemItemsRepository();
-
+        public ItemsController(IItemsRepository repository){
+            this.repository = repository;
         }
 
         //HTTPGET tells when someone do GET/items, down method is going to react
         [HttpGet]
-        public IEnumerable<Item> GetItems()
+        public IEnumerable<ItemDto> GetItems()
         {
-           var items = repository.GetItems();
+           var items = repository.GetItems().Select(item=> new ItemDto
+           {
+                Id = item.Id,
+                Name = item.Name;
+                Price=item.Price;
+                CreatedDate = item.CreatedDate;
+           });
            return items;
         }
 
         //GET/items/{id}
         [HttpGet("{id}")]
-        public Item GetItem(Guid id)
+        public ActionResult<Item> GetItem(Guid id)
         {
             var item = repository.GetItem(id);
+            if(item is null)
+            {
+                return NotFound();
+            }
             return item;
         }
 
