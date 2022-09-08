@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Catalog.Entities;
+using System.Threading.Tasks;
+
 
 namespace Catalog.Repositories
 {
@@ -16,31 +18,40 @@ namespace Catalog.Repositories
             new Item{Id = Guid.NewGuid(),Name = "Bronze Shield",Price = 18,CreatedDate = DateTimeOffset.UtcNow},
         };
 
-        public IEnumerable<Item> GetItemsAsync()
+        public async Task<IEnumerable<Item>> GetItemsAsync()
         {
-            return items;
+            return await Task.FromResult(items);
+            //return a complete Task with items (as this method is not called so)
         }
 
-        public Item GetItemAsync(Guid id)
+        public async Task<Item> GetItemAsync(Guid id)
         {
-            return items.Where(item=>item.Id == id).SingleOrDefault(); 
+            var item = items.Where(item=>item.Id == id).SingleOrDefault(); 
             //the output is a collection but we need only one item or the default one thats why we use SingleOrDefault
+            return await Task.FromResult(item);
+
             
         }
-        public void CreateItemAsync(Item item)
+        public async Task CreateItemAsync(Item item)
         {
             items.Add(item);
+            await Task.CompletedTask;
+            //create some Task that has already completed and return it without returning anything inside it
+
         }
-        public void UpdateItemAsync(Item item)
+
+        public async Task UpdateItemAsync(Item item)
         {
             var index = items.FindIndex(existingItem => existingItem.Id == item.Id);
             items[index] = item;
+            await Task.CompletedTask;
         }
 
-        public void DeleteItemAsync(Guid id)
+        public async Task DeleteItemAsync(Guid id)
         {
             var index = items.FindIndex(existingItem => existingItem.Id == id);
             items.RemoveAt(index);
+            await Task.CompletedTask;
         }
 
     }
