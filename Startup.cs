@@ -33,18 +33,21 @@ namespace Catalog
         // This method gets called by the runtime. Use this method to add services to the container.It is used to register all the services.
         public void ConfigureServices(IServiceCollection services)
         {
+            //whenever mongo sees guid in any entities,it should actually serialize them as a string in database(for guid and datetimeoffset)
+            BsonSerializer.RegisterSerializer(new GuidSerializer (BsonType.String));
+            BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer (BsonType.String));
+            var mongoDbSettings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
+
             //this process is setting the subject
             //we are constructing the explicit type here so that it is injected with additional configuration
             //we have to specify a connection string that a client is going to need
             services.AddSingleton<IMongoClient>(serviceprovider =>
             {
-                //whenever mongo sees guid in any entities,it should actually serialize them as a string in database(for guid and datetimeoffset)
-                BsonSerializer.RegisterSerializer(new GuidSerializer (BsonType.String));
-                BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer (BsonType.String));
+                
 
-                var settings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
+                //var settings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
                 //.get changes the output from IConfiguration to MongoDbsettings
-                return new MongoClient(settings.ConnectionString);
+                return new MongoClient(mongoDbSettings.ConnectionString);
                 //construct IMongoClient instance
             });
 
@@ -53,11 +56,17 @@ namespace Catalog
             services.AddSingleton<IItemsRepository,MongoDbItemsRepository>();
             //now switching to mongo client for saving data
 
-            services.AddControllers();
+            services.AddControllers(options=>
+            {
+                options.SuppressAsyncSuffixInActionNames =false;
+                //by default at runtime dotnet framework supress the async suffix, the above command is to fix that behaviour
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Catalog", Version = "v1" });
             });
+            services.AddHealthChecks()
+                    .AddMongoDb(mongoDbSettings.ConnectionString ,name:"mongodb", timeout:TimeSpan.FromSeconds(3));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,6 +88,8 @@ namespace Catalog
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
+                //middleware /health is route(name)
             });
         }
     }
