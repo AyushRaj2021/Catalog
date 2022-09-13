@@ -1,0 +1,42 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Ayush Raj\\projects\\Catalog\\build.proj": {}
+  },
+  "projects": {
+    "C:\\Users\\Ayush Raj\\projects\\Catalog\\build.proj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Ayush Raj\\projects\\Catalog\\build.proj",
+        "projectName": "build",
+        "projectPath": "C:\\Users\\Ayush Raj\\projects\\Catalog\\build.proj",
+        "packagesPath": "C:\\Users\\Ayush Raj\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ayush Raj\\projects\\Catalog\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Ayush Raj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net45"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net45": {
+            "targetAlias": "net45",
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net45": {
+          "targetAlias": "net45",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.411\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
