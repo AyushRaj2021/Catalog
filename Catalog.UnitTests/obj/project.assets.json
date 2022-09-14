@@ -2129,7 +2129,7 @@
           "build/netcoreapp2.1/xunit.runner.visualstudio.props": {}
         }
       },
-      "Catalog.APi/1.0.0": {
+      "Catalog.Api/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
@@ -2138,10 +2138,10 @@
           "Swashbuckle.AspNetCore": "5.6.3"
         },
         "compile": {
-          "bin/placeholder/Catalog.APi.dll": {}
+          "bin/placeholder/Catalog.Api.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Catalog.APi.dll": {}
+          "bin/placeholder/Catalog.Api.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -7179,15 +7179,15 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "Catalog.APi/1.0.0": {
+    "Catalog.Api/1.0.0": {
       "type": "project",
-      "path": "../Catalog.Api/Catalog.APi.csproj",
-      "msbuildProject": "../Catalog.Api/Catalog.APi.csproj"
+      "path": "../Catalog.Api/Catalog.Api.csproj",
+      "msbuildProject": "../Catalog.Api/Catalog.Api.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Catalog.APi >= 1.0.0",
+      "Catalog.Api >= 1.0.0",
       "Microsoft.Extensions.Logging.Abstractions >= 6.0.1",
       "Microsoft.NET.Test.Sdk >= 16.9.4",
       "coverlet.collector >= 3.0.2",
@@ -7223,8 +7223,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\Catalog.APi.csproj": {
-              "projectPath": "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\Catalog.APi.csproj"
+            "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {
+              "projectPath": "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\Catalog.Api.csproj"
             }
           }
         }

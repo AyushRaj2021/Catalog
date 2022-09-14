@@ -4,12 +4,12 @@
     "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.UnitTests\\Catalog.UnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\Catalog.APi.csproj": {
+    "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\Catalog.APi.csproj",
-        "projectName": "Catalog.APi",
-        "projectPath": "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\Catalog.APi.csproj",
+        "projectUniqueName": "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
+        "projectName": "Catalog.Api",
+        "projectPath": "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
         "packagesPath": "C:\\Users\\Ayush Raj\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\obj\\",
         "projectStyle": "PackageReference",
@@ -99,8 +99,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\Catalog.APi.csproj": {
-                "projectPath": "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\Catalog.APi.csproj"
+              "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {
+                "projectPath": "C:\\Users\\Ayush Raj\\projects\\Catalog\\Catalog.Api\\Catalog.Api.csproj"
               }
             }
           }
